@@ -15,7 +15,7 @@ pipeline {
 
     stage('image build') {
       steps {
-        sh 'docker build -t cicdplimage:latest .'
+        sh 'sudo docker build -t cicdplimage:latest .'
       }
     }
 
