@@ -15,7 +15,7 @@ pipeline {
 
     stage('image build') {
       steps {
-        sh 'docker build -t gkalmykovimage'
+        sh 'docker build -t "pipelineimage"'
       }
     }
 
