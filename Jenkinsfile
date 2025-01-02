@@ -15,7 +15,7 @@ pipeline {
 
     stage('image build') {
       steps {
-        sh 'docker build -t "pipelineimage"'
+        sh 'docker build -t cicd-pipeline:latest .'
       }
     }
 
