@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('build') {
       steps {
@@ -19,5 +19,23 @@ pipeline {
       }
     }
 
+    stage('Docker publish') {
+      steps {
+        script {
+          docker.withRegistry('https://registry.hub.docker.com', dockerhub_id)
+
+          {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+          }
+        }
+
+      }
+    }
+
+  }
+  environment {
+    registry = 'gkalmykov/cicd-pipeline'
+    registryCredentials = 'dockerhub_id'
   }
 }
